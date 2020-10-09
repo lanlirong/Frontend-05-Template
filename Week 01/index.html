@@ -25,7 +25,7 @@
 <div id="board"></div>
 <script>
     let pattern = [
-        [2,0,0],
+        [0,2,0],
         [0,1,0],
         [0,0,0]
     ]
@@ -104,12 +104,44 @@
                 if (pattern[i][j]) continue
                 let temp = clone(pattern)
                 temp[i][j] = color
-                if (check(temp,color)) return true
+                if (check(temp,color)) return [i,j]
             }
+        }
+        return null
+    }
+    function bestChoice(pattern,color) {
+        let p
+        if (p= willWin(pattern,color)) {
+            return {
+                point: p,
+                result: 1
+            }
+        }
+        let result = -2
+        let point = null
+        for (let i = 0; i < 3; i++) {
+            for (let j = 0; j < 3; j++) {
+                if (pattern[i][j]) continue
+                let temp = clone(pattern)
+                temp[i][j] = color
+                let r = bestChoice(temp, 3-color).result
+
+                if (-r>result) {
+                    result = -r
+                    point = [i,j]
+                }
+
+            }
+        }
+
+        return {
+            point: point,
+            result: point?result:0
         }
     }
 
     show()
+    console.log(bestChoice(pattern,color))
 </script>
 </body>
 </html>
