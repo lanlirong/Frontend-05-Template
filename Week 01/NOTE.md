@@ -33,4 +33,4 @@ JSON.parse(JSON.stringify(pattern))
 Object.create(pattern)
 ```
 
-6、
+6、异步操作中可以用while(true)的逻辑去处理
