@@ -9,3 +9,11 @@
 
 img设置display为block；
 父容器（如示例中的div）font-size设置为0；
+
+2、push/pop  深度优先搜索
+
+shift/push  广度优先搜索
+
+深度优先和广度优先只差在queue的数据结构上
+
+3、
